@@ -18,6 +18,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.ResourceAccessException;
+import org.springframework.web.client.RestTemplate;
 
 
 import java.io.File;
@@ -27,7 +29,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Objects;
+
+import static java.lang.Boolean.FALSE;
 
 /**
  * Created by dushman on 11/11/19.
@@ -45,6 +50,8 @@ public class JasperCommonMethods {
     private ObjectMapper objectMapper;
 
     private ResponseEntity responseEntity;
+
+    private Response response;
 
 
     /**
@@ -175,6 +182,108 @@ public class JasperCommonMethods {
         }
         return responseEntity;
     }
+
+
+    /***
+     *
+     */
+
+    //////////////////////////////////////
+
+    /**
+     * Created by dushman on 6/11/18.
+     * @param clsType
+     * @param REPORT_DATA_URI
+     * @param <T>
+     * @return
+     */
+    public <T> HashMap<String, ?> getDataApiCall(T clsType, String REPORT_DATA_URI, String origin) {
+
+        String getReportDataUrl = origin;
+
+        getReportDataUrl = getReportDataUrl + REPORT_DATA_URI;
+        RestTemplate restTemplate = new RestTemplate();
+        Object responce = restTemplate.postForObject(getReportDataUrl, clsType, Object.class);
+
+        HashMap<String, ?> reportDataResponse = (HashMap<String, ?>) responce;
+        HashMap<String, ?> reportDataMap = null;
+
+        String status = reportDataResponse.get("status").toString().toLowerCase();
+
+        if (status.equalsIgnoreCase("false")) {
+            reportDataMap = new HashMap<>();
+        } else {
+            reportDataMap = (HashMap<String, ?>) reportDataResponse.get("data");
+        }
+        return reportDataMap;
+    }
+
+
+    /***
+     * created by dushman
+     * 2018-10-02
+     * @param clsType
+     * @param REPORT_DATA_URI
+     * @return
+     */
+    public Object getDataApiCallObject(Object clsType, String REPORT_DATA_URI,  String origin) {
+
+        Object objectName;
+        String reportDataUrl = origin;
+        reportDataUrl = reportDataUrl + REPORT_DATA_URI;
+        RestTemplate restTemplate = new RestTemplate();
+        objectName = restTemplate.postForObject(reportDataUrl, clsType, Object.class);
+
+        Response response = objectMapper.convertValue(objectName, Response.class);
+
+        /////to reduce the exception, This if conditions was used
+        if (response.getStatus() == Boolean.TRUE) {
+            objectName = response.getData();
+
+        } else {
+            objectName = new Object();
+        }
+
+        return objectName;
+    }
+
+    /////
+
+    /***
+     * created by dushman
+     * 2018-11-22
+     * @param clsType
+     * @param REPORT_DATA_URI
+     * @return
+     */
+    public Response getDataApiCallNew(Object clsType, String REPORT_DATA_URI, String origin) {
+
+        Object objectName;
+        String reportDataUrl = origin;
+
+        try {
+
+            reportDataUrl = reportDataUrl + REPORT_DATA_URI;
+            RestTemplate restTemplate = new RestTemplate();
+
+            objectName = restTemplate.postForObject(reportDataUrl, clsType, Object.class);
+            response = objectMapper.convertValue(objectName, Response.class);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            response = new Response(2, FALSE, "Null inputs in Data access Service", "");
+        } catch (ResourceAccessException e) {
+            e.printStackTrace();
+            response = new Response(2, FALSE, "Connection refused with Data Access Service", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response = new Response(2200, Boolean.FALSE, "Technical Failure in Data access Service", "");
+        }
+
+        return response;
+    }
+
+
+
 
 
 

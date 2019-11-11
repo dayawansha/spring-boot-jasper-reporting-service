@@ -1,16 +1,12 @@
 package com.jasper.springbootjasperreportingservice.controller;
 
 import com.jasper.springbootjasperreportingservice.dto.Response;
-import com.jasper.springbootjasperreportingservice.dto.TestReport;
+import com.jasper.springbootjasperreportingservice.dto.reports.test.TestReportRequest;
 import com.jasper.springbootjasperreportingservice.service.ReportGenerationService;
 import com.jasper.springbootjasperreportingservice.util.JasperCommonMethods;
-import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/reports")
@@ -27,10 +23,10 @@ public class ReportGenerationController {
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity getTestReport(@RequestBody TestReport testReport) {
+    public ResponseEntity getTestReport(@RequestBody TestReportRequest testReportRequest) {
 
-        response = reportGenerationService.getTestReport();
-        responseEntity = jasperCommonMethods.getResponseEntity(response, testReport.getReportType());
+        response = reportGenerationService.getTestReport(testReportRequest);
+        responseEntity = jasperCommonMethods.getResponseEntity(response, testReportRequest.getReportType());
         return responseEntity;
     }
 }

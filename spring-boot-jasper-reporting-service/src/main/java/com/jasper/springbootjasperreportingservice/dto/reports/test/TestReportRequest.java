@@ -1,4 +1,4 @@
-package com.jasper.springbootjasperreportingservice.dto;
+package com.jasper.springbootjasperreportingservice.dto.reports.test;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TestReport {
+public class TestReportRequest {
     private String reportType;
 }
