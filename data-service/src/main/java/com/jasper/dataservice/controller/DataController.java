@@ -9,14 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/dataService")
+@RequestMapping("/dataService/")
 public class DataController {
 
     @Autowired
     private DataService dataService;
 
 
-    @GetMapping
+    @GetMapping(value = "testReport")
     public ResponseEntity<TestReportData> getAllUserIdentities(@RequestParam(value = "reportType") String reportType)  {
         TestReportData commonResponse = dataService.data(reportType);
         return new ResponseEntity<>(commonResponse, HttpStatus.OK);
