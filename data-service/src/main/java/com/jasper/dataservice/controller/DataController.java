@@ -17,9 +17,8 @@ public class DataController {
 
 
     @GetMapping
-    public ResponseEntity<TestReportData> getAllUserIdentities(@RequestParam(value = "username") String username)  {
-//    public ResponseEntity<TestReportData> getAllUserIdentities()  {
-        TestReportData commonResponse = dataService.data(username);
+    public ResponseEntity<TestReportData> getAllUserIdentities(@RequestParam(value = "reportType") String reportType)  {
+        TestReportData commonResponse = dataService.data(reportType);
         return new ResponseEntity<>(commonResponse, HttpStatus.OK);
     }
 

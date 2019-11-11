@@ -9,11 +9,13 @@ import java.util.ArrayList;
 @Component
 public class DataService {
 
-    public TestReportData data(String testReportRequest){
+    public TestReportData data(String reportType){
 
         TestReportData testReportData = new TestReportData();
-        testReportData.setDoubleValue(7777.77);
+        testReportData.setReportType(reportType);
         testReportData.setStringValue("AAAAA");
+        testReportData.setDoubleValue(7777.77);
+
 
         String[] stringArray = {"Apple", "Banana", "Orange", "Grapes"};
         testReportData.setStringArray(stringArray);
