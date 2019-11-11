@@ -199,9 +199,9 @@ public class JasperCommonMethods {
      */
     public <T> HashMap<String, ?> getDataApiCall(T clsType, String REPORT_DATA_URI, String origin) {
 
-        String getReportDataUrl = origin;
+//        String getReportDataUrl = origin;
 
-        getReportDataUrl = getReportDataUrl + REPORT_DATA_URI;
+        String getReportDataUrl =   REPORT_DATA_URI;
         RestTemplate restTemplate = new RestTemplate();
         Object responce = restTemplate.postForObject(getReportDataUrl, clsType, Object.class);
 
