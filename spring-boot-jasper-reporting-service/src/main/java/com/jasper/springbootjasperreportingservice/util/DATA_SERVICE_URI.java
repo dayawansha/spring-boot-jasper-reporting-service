@@ -11,10 +11,10 @@ public class DATA_SERVICE_URI {
 
     public static final String origin = environment.getProperty("jasper.report.origin");
 
-    public  static final String baseURL = "/api/data-service/";
+    public  static final String baseURL = "/dataService/";
 
 
-    public  static final String testReport = origin + baseURL + "testReport/";
+    public  static final String testReport = origin + baseURL + "testReport";
 
 
 }
