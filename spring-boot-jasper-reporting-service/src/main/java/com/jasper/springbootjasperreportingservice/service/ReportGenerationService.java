@@ -9,6 +9,7 @@ import com.jasper.springbootjasperreportingservice.util.JasperCommonMethods;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ResourceLoader;
@@ -38,27 +39,35 @@ public class ReportGenerationService  extends InfoLogger {
     @Autowired
     private JasperCommonMethods jasperCommonMethods;
 
+    @Value("${datasource.origin}")
+    private String origin;
+
+//    public static final String origin = environment.getProperty("jasper.report.origin");
+
+
     private JRBeanArrayDataSource jrBeanArrayDataSource;
 
     private ByteArrayResource byteArrayResource;
 
     private Response response;
 
-    public Response getTestReport(TestReportRequest testReportRequest) {
+    public Response getTestReport(String reportType) {
 
-        String jrxmlFileName = "jrxmls/testReport";
+        String jrxmlFileName = "jrxmls/basicReport/basicReportMain.jrxml";
 
-        if (!Objects.equals(testReportRequest.getReportType(), "")) {
+        if (!Objects.equals(reportType, "")) {
 
             try {
 
-                HashMap<String, ?> dataMap = jasperCommonMethods.getDataApiCall(testReportRequest, DATA_SERVICE_URI.testReport, "agentOrigin");
+                String getUrl = origin+ DATA_SERVICE_URI.basicReport + "?reportType=" + reportType;
+
+                HashMap<String, ?> dataMap = jasperCommonMethods.getDataApiCall(getUrl);
 
                 BasicReportData intimationReportDTO = objectMapper.convertValue(dataMap, BasicReportData.class);
 
                 JRBeanArrayDataSource jrBeanArrayDataSource = new JRBeanArrayDataSource(new BasicReportData[]{intimationReportDTO});
 
-                byteArrayResource = jasperCommonMethods.reportGenarateMethode(jrxmlFileName, jrBeanArrayDataSource, testReportRequest.getReportType());
+                byteArrayResource = jasperCommonMethods.reportGenarateMethode(jrxmlFileName, jrBeanArrayDataSource, reportType);
 
 
                 response = new Response(1, TRUE, "sucess", byteArrayResource);

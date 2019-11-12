@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/reports")
+@RequestMapping("/reports/")
 public class ReportGenerationController {
 
     @Autowired
@@ -22,11 +22,11 @@ public class ReportGenerationController {
     private Response response;
 
     @CrossOrigin
-    @PostMapping
-    public ResponseEntity getTestReport(@RequestBody TestReportRequest testReportRequest) {
+    @GetMapping(value = "basicReport")
+    public ResponseEntity getTestReport(@RequestParam String reportType) {
 
-        response = reportGenerationService.getTestReport(testReportRequest);
-        responseEntity = jasperCommonMethods.getResponseEntity(response, testReportRequest.getReportType());
+        response = reportGenerationService.getTestReport(reportType);
+        responseEntity = jasperCommonMethods.getResponseEntity(response, reportType);
         return responseEntity;
     }
 }

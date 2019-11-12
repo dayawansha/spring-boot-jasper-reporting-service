@@ -192,18 +192,19 @@ public class JasperCommonMethods {
 
     /**
      * Created by dushman on 6/11/18.
-     * @param clsType
-     * @param REPORT_DATA_URI
+//     * @param clsType
+//     * @param REPORT_DATA_URI
      * @param <T>
      * @return
      */
-    public <T> HashMap<String, ?> getDataApiCall(T clsType, String REPORT_DATA_URI, String origin) {
+    public <T> HashMap<String, ?> getDataApiCall(String  getUri) {
 
 //        String getReportDataUrl = origin;
 
-        String getReportDataUrl =   REPORT_DATA_URI;
+//        String getReportDataUrl =   REPORT_DATA_URI;
         RestTemplate restTemplate = new RestTemplate();
-        Object responce = restTemplate.postForObject(getReportDataUrl, clsType, Object.class);
+//        Object responce = restTemplate.postForObject(getReportDataUrl, clsType, Object.class);
+        Object responce = restTemplate.getForObject(getUri, Object.class);
 
         HashMap<String, ?> reportDataResponse = (HashMap<String, ?>) responce;
         HashMap<String, ?> reportDataMap = null;
