@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef56a91f-0407-4cc0-aa34-0738f21fff42">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="reportType" class="java.lang.String">
+		<fieldDescription><![CDATA[reportType]]></fieldDescription>
+	</field>
+	<field name="stringArrayList" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[stringArrayList]]></fieldDescription>
+	</field>
+	<field name="integerArray" class="java.lang.Integer[]">
+		<fieldDescription><![CDATA[integerArray]]></fieldDescription>
+	</field>
+	<field name="stringValue" class="java.lang.String">
+		<fieldDescription><![CDATA[stringValue]]></fieldDescription>
+	</field>
+	<field name="stringArray" class="java.lang.String[]">
+		<fieldDescription><![CDATA[stringArray]]></fieldDescription>
+	</field>
+	<field name="doubleValue" class="java.lang.Double">
+		<fieldDescription><![CDATA[doubleValue]]></fieldDescription>
+	</field>
+	<field name="subDataDtoArrayListArrayList" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[subDataDtoArrayListArrayList]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="0" width="310" height="79" uuid="19c8224c-dcbf-41d6-8cbb-b5720b5630f3"/>
+				<textElement>
+					<font size="40"/>
+				</textElement>
+				<text><![CDATA[Test Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="90" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="a5716b1e-4b7e-4f91-81a5-c7e3ae9833e3"/>
+				<textFieldExpression><![CDATA[$F{reportType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="1ad0b247-99f4-460f-b502-fad7bdc178b7"/>
+				<text><![CDATA[reportType]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="30" width="100" height="30" uuid="f85ea742-f937-4d1c-829a-550bf20657f9"/>
+				<textFieldExpression><![CDATA[$F{stringValue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="100" height="30" uuid="937d9424-5a6f-46f9-a8d5-305938f7bd1c"/>
+				<text><![CDATA[stringValue]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="60" width="100" height="30" uuid="bbe05425-7f33-47f4-b278-5dc1472f46d2"/>
+				<textFieldExpression><![CDATA[$F{doubleValue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="60" width="100" height="30" uuid="85a8443d-7d16-4bff-9ff6-9c269daed5bb"/>
+				<text><![CDATA[doubleValue]]></text>
+			</staticText>
+		</band>
+		<band height="106"/>
+	</detail>
+</jasperReport>
