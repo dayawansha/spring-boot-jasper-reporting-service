@@ -1,7 +1,7 @@
 package com.jasper.dataservice.controller;
 
 
-import com.jasper.dataservice.dto.reports.test.TestReportData;
+import com.jasper.dataservice.dto.reports.basicReport.TestReportData;
 import com.jasper.dataservice.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

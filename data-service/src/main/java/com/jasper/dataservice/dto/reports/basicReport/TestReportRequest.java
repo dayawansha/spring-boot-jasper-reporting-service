@@ -1,4 +1,4 @@
-package com.jasper.dataservice.dto.reports.test;
+package com.jasper.dataservice.dto.reports.basicReport;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

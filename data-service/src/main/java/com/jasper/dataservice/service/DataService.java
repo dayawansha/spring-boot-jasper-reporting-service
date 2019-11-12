@@ -1,7 +1,7 @@
 package com.jasper.dataservice.service;
 
-import com.jasper.dataservice.dto.reports.test.DataDto;
-import com.jasper.dataservice.dto.reports.test.TestReportData;
+import com.jasper.dataservice.dto.reports.basicReport.DataDto;
+import com.jasper.dataservice.dto.reports.basicReport.TestReportData;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
