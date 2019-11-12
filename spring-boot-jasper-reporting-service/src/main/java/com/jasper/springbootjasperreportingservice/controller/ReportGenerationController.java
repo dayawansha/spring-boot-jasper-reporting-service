@@ -1,7 +1,7 @@
 package com.jasper.springbootjasperreportingservice.controller;
 
 import com.jasper.springbootjasperreportingservice.dto.Response;
-import com.jasper.springbootjasperreportingservice.dto.reports.test.TestReportRequest;
+import com.jasper.springbootjasperreportingservice.dto.reports.basicReport.TestReportRequest;
 import com.jasper.springbootjasperreportingservice.service.ReportGenerationService;
 import com.jasper.springbootjasperreportingservice.util.JasperCommonMethods;
 import org.springframework.beans.factory.annotation.Autowired;

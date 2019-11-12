@@ -1,4 +1,4 @@
-package com.jasper.springbootjasperreportingservice.dto.reports.test;
+package com.jasper.springbootjasperreportingservice.dto.reports.basicReport;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
