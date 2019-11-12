@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DataDto {
+public class SubDataDto {
     private Integer valueOne;
     private String valueTwo;
     private Double valueThree;

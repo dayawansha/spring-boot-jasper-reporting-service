@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TestReportData {
+public class BasicReportData {
     private String reportType;
 
     private String stringValue;
@@ -20,6 +20,6 @@ public class TestReportData {
     private Integer[] integerArray;
 
     private ArrayList<String> stringArrayList;
-    private ArrayList<DataDto> dataDtoArrayListArrayList;
+    private ArrayList<SubDataDto> subDataDtoArrayListArrayList;
 
 }

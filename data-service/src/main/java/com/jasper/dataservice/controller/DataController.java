@@ -1,7 +1,7 @@
 package com.jasper.dataservice.controller;
 
 
-import com.jasper.dataservice.dto.reports.basicReport.TestReportData;
+import com.jasper.dataservice.dto.reports.basicReport.BasicReportData;
 import com.jasper.dataservice.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +17,8 @@ public class DataController {
 
 
     @GetMapping(value = "testReport")
-    public ResponseEntity<TestReportData> getAllUserIdentities(@RequestParam(value = "reportType") String reportType)  {
-        TestReportData commonResponse = dataService.data(reportType);
+    public ResponseEntity<BasicReportData> getAllUserIdentities(@RequestParam(value = "reportType") String reportType)  {
+        BasicReportData commonResponse = dataService.data(reportType);
         return new ResponseEntity<>(commonResponse, HttpStatus.OK);
     }
 
