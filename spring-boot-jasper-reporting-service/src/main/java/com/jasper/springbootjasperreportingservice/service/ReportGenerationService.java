@@ -1,7 +1,7 @@
 package com.jasper.springbootjasperreportingservice.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jasper.springbootjasperreportingservice.dto.Response;
-import com.jasper.springbootjasperreportingservice.dto.reports.basicReport.TestReportData;
+import com.jasper.springbootjasperreportingservice.dto.reports.basicReport.BasicReportData;
 import com.jasper.springbootjasperreportingservice.dto.reports.basicReport.TestReportRequest;
 import com.jasper.springbootjasperreportingservice.util.DATA_SERVICE_URI;
 import com.jasper.springbootjasperreportingservice.util.InfoLogger;
@@ -54,9 +54,9 @@ public class ReportGenerationService  extends InfoLogger {
 
                 HashMap<String, ?> dataMap = jasperCommonMethods.getDataApiCall(testReportRequest, DATA_SERVICE_URI.testReport, "agentOrigin");
 
-                TestReportData intimationReportDTO = objectMapper.convertValue(dataMap, TestReportData.class);
+                BasicReportData intimationReportDTO = objectMapper.convertValue(dataMap, BasicReportData.class);
 
-                JRBeanArrayDataSource jrBeanArrayDataSource = new JRBeanArrayDataSource(new TestReportData[]{intimationReportDTO});
+                JRBeanArrayDataSource jrBeanArrayDataSource = new JRBeanArrayDataSource(new BasicReportData[]{intimationReportDTO});
 
                 byteArrayResource = jasperCommonMethods.reportGenarateMethode(jrxmlFileName, jrBeanArrayDataSource, testReportRequest.getReportType());
 
